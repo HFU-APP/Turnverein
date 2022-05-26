@@ -47,6 +47,7 @@ namespace Turnverein.ViewModels
                 Id = item.Id;
                 Text = item.Text;
                 Description = item.Description;
+                Title = Text;
             }
             catch (Exception)
             {
