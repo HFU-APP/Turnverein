@@ -11,6 +11,7 @@ namespace Turnverein.ViewModels
     public class ContestViewModel : BaseViewModel
     {
         private ContestItem selectedContestItem;
+        public Command Onpushed { get; }
 
         public ObservableCollection<ContestItem> Items { get; }
         public Command LoadItemsCommand { get; }
@@ -77,8 +78,11 @@ namespace Turnverein.ViewModels
             if (contestItem == null)
                 return;
 
-            // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={contestItem.Id}");
+            //// This will push the ItemDetailPage onto the navigation stack
+            //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={contestItem.Id}");
+
+            await Application.Current.MainPage.DisplayActionSheet("Bitte wählen Sie Ihren Verein aus!", "Cancel", null, "Verein 1", "Verein2",
+                "Verein 3", "Verein 4");
         }
     }
 }
