@@ -14,10 +14,10 @@ namespace Turnverein.Services
         {
             items = new List<ContestItem>()
             {
-                new ContestItem { Id = Guid.NewGuid().ToString(), Text = "Weitwurf" },
-                new ContestItem { Id = Guid.NewGuid().ToString(), Text = "3-KM Lauf" },
-                new ContestItem { Id = Guid.NewGuid().ToString(), Text = "Korbball" },
-                new ContestItem { Id = Guid.NewGuid().ToString(), Text = "Disziplin 4" },
+                new ContestItem { Id = Guid.NewGuid().ToString(), ContestName = "Weitwurf" },
+                new ContestItem { Id = Guid.NewGuid().ToString(), ContestName = "3-KM Lauf" },
+                new ContestItem { Id = Guid.NewGuid().ToString(), ContestName = "Korbball" },
+                new ContestItem { Id = Guid.NewGuid().ToString(), ContestName = "Disziplin 4" },
             };
         }
 

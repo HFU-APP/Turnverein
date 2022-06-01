@@ -52,7 +52,7 @@ namespace Turnverein.ViewModels
             ContestItem newContestItem = new ContestItem()
             {
                 Id = Guid.NewGuid().ToString(),
-                Text = Text,
+                ContestName = Text,
             };
 
             await DataStore.AddItemAsync(newContestItem);

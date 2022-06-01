@@ -11,7 +11,6 @@ namespace Turnverein.ViewModels
     {
         private string itemId;
         private string text;
-        private string description;
         public string Id { get; set; }
 
         public string Text
@@ -20,11 +19,6 @@ namespace Turnverein.ViewModels
             set => SetProperty(ref text, value);
         }
 
-        public string Description
-        {
-            get => description;
-            set => SetProperty(ref description, value);
-        }
 
         public string ItemId
         {
@@ -45,7 +39,7 @@ namespace Turnverein.ViewModels
             {
                 var item = await DataStore.GetItemAsync(itemId);
                 Id = item.Id;
-                Text = item.Text;
+                Text = item.ContestName;
                 Title = Text;
             }
             catch (Exception)
