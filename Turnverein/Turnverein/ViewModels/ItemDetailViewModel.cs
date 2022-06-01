@@ -46,12 +46,11 @@ namespace Turnverein.ViewModels
                 var item = await DataStore.GetItemAsync(itemId);
                 Id = item.Id;
                 Text = item.Text;
-                Description = item.Description;
                 Title = Text;
             }
             catch (Exception)
             {
-                Debug.WriteLine("Failed to Load Item");
+                Debug.WriteLine("Failed to Load ContestItem");
             }
         }
     }

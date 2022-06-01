@@ -10,7 +10,7 @@ namespace Turnverein.Views
 {
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public ContestItem ContestItem { get; set; }
 
         public NewItemPage()
         {

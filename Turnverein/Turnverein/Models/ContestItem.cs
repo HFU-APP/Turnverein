@@ -2,7 +2,7 @@
 
 namespace Turnverein.Models
 {
-    public class Item
+    public class ContestItem
     {
         public string Id { get; set; }
         public string Text { get; set; }

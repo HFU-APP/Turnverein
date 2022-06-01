@@ -49,14 +49,13 @@ namespace Turnverein.ViewModels
 
         private async void OnSave()
         {
-            Item newItem = new Item()
+            ContestItem newContestItem = new ContestItem()
             {
                 Id = Guid.NewGuid().ToString(),
                 Text = Text,
-                Description = Description
             };
 
-            await DataStore.AddItemAsync(newItem);
+            await DataStore.AddItemAsync(newContestItem);
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");

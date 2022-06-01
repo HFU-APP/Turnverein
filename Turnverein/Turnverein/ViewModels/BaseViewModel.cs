@@ -10,7 +10,7 @@ namespace Turnverein.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<ContestItem> DataStore => DependencyService.Get<IDataStore<ContestItem>>();
 
         bool isBusy = false;
         public bool IsBusy

@@ -12,15 +12,15 @@ using Xamarin.Forms.Xaml;
 
 namespace Turnverein.Views
 {
-    public partial class ItemsPage : ContentPage
+    public partial class ContestPage : ContentPage
     {
-        ItemsViewModel _viewModel;
+        ContestViewModel _viewModel;
 
-        public ItemsPage()
+        public ContestPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new ItemsViewModel();
+            BindingContext = _viewModel = new ContestViewModel();
         }
 
         protected override void OnAppearing()

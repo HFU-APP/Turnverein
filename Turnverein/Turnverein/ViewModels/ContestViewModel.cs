@@ -8,22 +8,22 @@ using Xamarin.Forms;
 
 namespace Turnverein.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ContestViewModel : BaseViewModel
     {
-        private Item _selectedItem;
+        private ContestItem selectedContestItem;
 
-        public ObservableCollection<Item> Items { get; }
+        public ObservableCollection<ContestItem> Items { get; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
-        public Command<Item> ItemTapped { get; }
+        public Command<ContestItem> ItemTapped { get; }
 
-        public ItemsViewModel()
+        public ContestViewModel()
         {
-            Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Title = "Disziplin auswählen";
+            Items = new ObservableCollection<ContestItem>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            ItemTapped = new Command<Item>(OnItemSelected);
+            ItemTapped = new Command<ContestItem>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
         }
@@ -54,15 +54,15 @@ namespace Turnverein.ViewModels
         public void OnAppearing()
         {
             IsBusy = true;
-            SelectedItem = null;
+            SelectedContestItem = null;
         }
 
-        public Item SelectedItem
+        public ContestItem SelectedContestItem
         {
-            get => _selectedItem;
+            get => selectedContestItem;
             set
             {
-                SetProperty(ref _selectedItem, value);
+                SetProperty(ref selectedContestItem, value);
                 OnItemSelected(value);
             }
         }
@@ -72,13 +72,13 @@ namespace Turnverein.ViewModels
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
-        async void OnItemSelected(Item item)
+        async void OnItemSelected(ContestItem contestItem)
         {
-            if (item == null)
+            if (contestItem == null)
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
+            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={contestItem.Id}");
         }
     }
 }

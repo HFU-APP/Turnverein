@@ -6,53 +6,51 @@ using Turnverein.Models;
 
 namespace Turnverein.Services
 {
-    public class MockDataStore : IDataStore<Item>
+    public class MockDataStore : IDataStore<ContestItem>
     {
-        readonly List<Item> items;
+        readonly List<ContestItem> items;
 
         public MockDataStore()
         {
-            items = new List<Item>()
+            items = new List<ContestItem>()
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
+                new ContestItem { Id = Guid.NewGuid().ToString(), Text = "Weitwurf" },
+                new ContestItem { Id = Guid.NewGuid().ToString(), Text = "3-KM Lauf" },
+                new ContestItem { Id = Guid.NewGuid().ToString(), Text = "Korbball" },
+                new ContestItem { Id = Guid.NewGuid().ToString(), Text = "Disziplin 4" },
             };
         }
 
-        public async Task<bool> AddItemAsync(Item item)
+        public async Task<bool> AddItemAsync(ContestItem contestItem)
         {
-            items.Add(item);
+            items.Add(contestItem);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Item item)
+        public async Task<bool> UpdateItemAsync(ContestItem contestItem)
         {
-            var oldItem = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
+            var oldItem = items.Where((ContestItem arg) => arg.Id == contestItem.Id).FirstOrDefault();
             items.Remove(oldItem);
-            items.Add(item);
+            items.Add(contestItem);
 
             return await Task.FromResult(true);
         }
 
         public async Task<bool> DeleteItemAsync(string id)
         {
-            var oldItem = items.Where((Item arg) => arg.Id == id).FirstOrDefault();
+            var oldItem = items.Where((ContestItem arg) => arg.Id == id).FirstOrDefault();
             items.Remove(oldItem);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<Item> GetItemAsync(string id)
+        public async Task<ContestItem> GetItemAsync(string id)
         {
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<ContestItem>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
         }
