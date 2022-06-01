@@ -78,11 +78,12 @@ namespace Turnverein.ViewModels
             if (contestItem == null)
                 return;
 
-            //// This will push the ItemDetailPage onto the navigation stack
-            //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={contestItem.Id}");
+            Debug.WriteLine("SelectedContestItem:" + contestItem.Id);
+            Debug.WriteLine("SelectedContestItem:" + contestItem.ContestName);
 
-            await Application.Current.MainPage.DisplayActionSheet("Bitte wählen Sie Ihren Verein aus!", "Cancel", null, "Verein 1", "Verein2",
+            string action = await Application.Current.MainPage.DisplayActionSheet("Bitte wählen Sie Ihren Verein aus!", "Cancel", null, "Verein 1", "Verein2",
                 "Verein 3", "Verein 4");
+            Debug.WriteLine("Action: " + action);
         }
     }
 }
