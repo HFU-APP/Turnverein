@@ -8,7 +8,8 @@ namespace Turnverein
 {
     public partial class App : Application
     {
-
+        private static TokenDataBaseController tokenDataBase;
+        private static AccountDataBaseController accountDataBase;
         public App()
         {
             InitializeComponent();
@@ -27,6 +28,32 @@ namespace Turnverein
 
         protected override void OnResume()
         {
+        }
+
+        public static AccountDataBaseController AccountDataBase
+        {
+            get
+            {
+                if (accountDataBase == null)
+                {
+                    accountDataBase = new AccountDataBaseController();
+                }
+
+                return accountDataBase;
+            }
+        }
+
+        public static TokenDataBaseController TokenDataBase
+        {
+            get
+            {
+                if (tokenDataBase == null)
+                {
+                    tokenDataBase = new TokenDataBaseController();
+                }
+
+                return tokenDataBase;
+            }
         }
     }
 }

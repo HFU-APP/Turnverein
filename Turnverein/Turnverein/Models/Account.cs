@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SQLite;
 
 namespace Turnverein.Models
 {
     public class Account
     {
+        [PrimaryKey]
         public int Id { get; set; }
         public string AccountName { get; set; }
         public string Password { get; set; }
@@ -14,6 +16,10 @@ namespace Turnverein.Models
         {
             Password = password;
             AccountName = accountName;
+        }
+
+        public Account()
+        {
         }
 
         public bool CorrectInformation()

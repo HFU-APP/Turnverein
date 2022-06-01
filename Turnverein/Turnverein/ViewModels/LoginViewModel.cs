@@ -25,14 +25,14 @@ namespace Turnverein.ViewModels
             if (account.CorrectInformation())
             {
                 await Application.Current.MainPage.DisplayAlert("Login", "Login erfolgreich", "Ok");
+                // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+                App.AccountDataBase.SaveAccount(account);
+                await Shell.Current.GoToAsync($"//{nameof(ContestPage)}");
             }
             else
             {
                 await Application.Current.MainPage.DisplayAlert("Login", "Login nicht korrekt, kein Benutzername oder kein Passwort", "Ok");
             }
-
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            //await Shell.Current.GoToAsync($"//{nameof(ContestPage)}");
         }
     }
 }
